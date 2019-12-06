@@ -1,1 +1,2 @@
 # simonGame
+Memory game
