@@ -16,6 +16,7 @@ const scoreDisplay = document.querySelector("#score-display")
 const currentStatus = document.querySelector("#current-status")
 const startButton = document.querySelector("#start-button")
 const highScoreDisplay = document.querySelector("#highscore-display")
+const gameDivs = document.querySelectorAll(".game-buttons")
 // const redButton = document.querySelector("#red")
 // const yellowButton = document.querySelector("#yellow")
 // const blueButton = document.querySelector("#blue")
@@ -34,23 +35,21 @@ startButton.addEventListener('click', evt => {startGame(evt)})
 class GameButton {
     constructor(tag){
         this.tag = tag
-        this.str = `"#{this.tag}"`
-        this.div = document.querySelector(this.str)
+        this.div = document.querySelector(`#${this.tag}`)
     }
     flashButton() {
-        this.div.backgroundColor = `"${this.tag}"`
-        setTimeout(this.clearButton, 1000)
+        console.log(this.div + "flash " + this.tag)
+        this.div.style.backgroundColor = this.tag
+        setTimeout(clearButtons, 1000)
     }
-    clearButton() {
-        this.div.backgroundColor = "white"
-    }
+
 }
 
- gameContainer.childNodes.forEach (button => {
+ gameDivs.forEach (button => {
     tag = button.id
-    console.log(tag)
     newButton = new GameButton(tag)
     buttonArray.push(newButton)
+    button.addEventListener('click', evt => {handleClick(evt)})
  })
 
 function startGame(evt) {
@@ -60,9 +59,13 @@ function startGame(evt) {
 
 function handleClick(evt) {
     console.log(evt)
-
+    let id = evt.target.dataset.number
+    buttonArray[id].flashButton()
 }
 
+function clearButtons() {
+    gameDivs.forEach(button => button.style.backgroundColor = "white")
+}
 // function clearSquare() {
 //     redButton.style.backgroundColor = "white"
 // }
