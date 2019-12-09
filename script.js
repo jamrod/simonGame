@@ -27,6 +27,7 @@ const gameDivs = document.querySelectorAll(".game-buttons")
 let buttonArray = []
 let sequence = []
 let currentCount = 0
+let currentScore = 0
 let watching = true
 
 startButton.addEventListener('click', evt => {startGame(evt)})
@@ -53,8 +54,8 @@ class GameButton {
  })
 
 function startGame(evt) {
-    console.log(evt)
-    flashSquare()
+    // startButton.style.visibility = "hidden"
+    runSequence()
 }
 
 function handleClick(evt) {
@@ -64,14 +65,29 @@ function handleClick(evt) {
 }
 
 function clearButtons() {
-    gameDivs.forEach(button => button.style.backgroundColor = "white")
+    gameDivs.forEach(button => button.style.backgroundColor = "white") 
 }
-// function clearSquare() {
-//     redButton.style.backgroundColor = "white"
-// }
 
-// function flashSquare(){
-//     redButton.style.backgroundColor = "red"
-//     setTimeout(clearSquare, 1000)
-// }
-// redButton.style.backgroundColor = "red"
+function runSequence() {
+    currentStatus.textContent = "Watch"
+    let nextButton = Math.floor(Math.random() * 6)
+    sequence.push(nextButton)
+    let delay = 0
+    for (i=0; i<sequence.length; i++){
+        let item = buttonArray[i]
+        if (i>0) {
+            delay += 2000
+            console.log(delay)
+            setTimeout(callFlash, delay, item )
+        } else {
+            item.flashButton()
+        }
+    }
+        
+    console.log(sequence)
+}
+
+function callFlash(obj){
+    obj.flashButton()
+}
+  

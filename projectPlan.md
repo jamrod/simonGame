@@ -70,7 +70,7 @@ javascript timers, setInterval()
 
 ## Issues and Resolutions
 -  **Roadblocks-**
-
+this connection on a setTimeout - clearing all buttons everytime a button is flashed
 -  **Wins-**
 
 
