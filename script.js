@@ -12,3 +12,28 @@
     //persist highscore
 
 const gameContainer = document.querySelector("#game-container")
+const scoreDisplay = document.querySelector("#score-display")
+const currentStatus = document.querySelector("#current-status")
+const startButton = document.querySelector("#start-button")
+const highScoreDisplay = document.querySelector("#highscore-display")
+const redButton = document.querySelector("#red")
+const yellowButton = document.querySelector("#yellow")
+const blueButton = document.querySelector("#blue")
+const orangeButton = document.querySelector("#orange")
+const greenButton = document.querySelector("#green")
+const violetButton = document.querySelector("#violet")
+
+let sequence = []
+let currentCount = 0
+let watching = true
+ 
+startButton.addEventListener('click', startGame(evt))
+gameContainer.addEventListener('click', handleClick(evt))
+
+function startGame(evt) {
+    console.log(click)
+}
+
+function handleClick(evt) {
+    console.log(evt)
+}
