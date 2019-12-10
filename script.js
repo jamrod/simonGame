@@ -119,9 +119,8 @@ function loss(){
         localStorage.setItem('score',highScore)
     }
     highScoreDisplay.textContent = highScore
+    getAllTime()
 }
-
-//localStorage.setItem('score', '5')
 
 function getAllTime() {
     if (localStorage.getItem('score')) {
