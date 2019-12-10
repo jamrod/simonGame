@@ -54,7 +54,7 @@ class GameButton {
  })
 
 function startGame(evt) {
-    startButton.textContent = "Reset"
+    startButton.textContent = "Restart"
     sequence = []
     currentScore = 0
     scoreDisplay.textContent = currentScore
@@ -101,6 +101,7 @@ function runSequence() {
             item.flashButton()
         }
         if (i === sequence.length - 1) {
+            delay += 1000
             setTimeout(clearWatch, delay)
         }
     }
@@ -118,7 +119,8 @@ function clearWatch() {
 
 function loss(){
     watching = true
-    currentStatus.textContent = "Sorry, that wasn't right! Click 'Reset' to try again"
+    currentStatus.style.fontSize = "medium"
+    currentStatus.textContent = "Sorry, try again"
     if (currentScore > highScore) {
         highScore = currentScore
     }
