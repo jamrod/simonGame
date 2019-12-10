@@ -17,12 +17,6 @@ const currentStatus = document.querySelector("#current-status")
 const startButton = document.querySelector("#start-button")
 const highScoreDisplay = document.querySelector("#highscore-display")
 const gameDivs = document.querySelectorAll(".game-buttons")
-// const redButton = document.querySelector("#red")
-// const yellowButton = document.querySelector("#yellow")
-// const blueButton = document.querySelector("#blue")
-// const orangeButton = document.querySelector("#orange")
-// const greenButton = document.querySelector("#green")
-// const violetButton = document.querySelector("#violet")
 
 let buttonArray = []
 let sequence = []
@@ -82,7 +76,6 @@ function handleClick(evt) {
 
 function clearButton(obj) {
     obj.style.backgroundColor = "white"
-    // gameDivs.forEach(button => button.style.backgroundColor = "white") 
 }
 
 function runSequence() {
@@ -123,6 +116,18 @@ function loss(){
     currentStatus.textContent = "Sorry, try again"
     if (currentScore > highScore) {
         highScore = currentScore
+        localStorage.setItem('score',highScore)
     }
     highScoreDisplay.textContent = highScore
 }
+
+//localStorage.setItem('score', '5')
+
+function getAllTime() {
+    if (localStorage.getItem('score')) {
+        let allTimeHighScore = localStorage.getItem('score')
+        let allTime = document.querySelector('#all-time')
+        allTime.textContent = allTimeHighScore
+    }
+}
+getAllTime()
