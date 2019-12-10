@@ -40,9 +40,8 @@ class GameButton {
         this.div = document.querySelector(`#${this.tag}`)
     }
     flashButton() {
-        console.log(this.div + "flash " + this.tag)
         this.div.style.backgroundColor = this.tag
-        setTimeout(clearButtons, 1000)
+        setTimeout(clearButton, 750, this.div)
     }
 
 }
@@ -55,12 +54,10 @@ class GameButton {
  })
 
 function startGame(evt) {
-    if (currentScore > highScore) {
-        highScore = currentScore
-    }
     startButton.textContent = "Reset"
     sequence = []
     currentScore = 0
+    scoreDisplay.textContent = currentScore
     runSequence()
 }
 
@@ -82,8 +79,9 @@ function handleClick(evt) {
     }
 }
 
-function clearButtons() {
-    gameDivs.forEach(button => button.style.backgroundColor = "white") 
+function clearButton(obj) {
+    obj.style.backgroundColor = "white"
+    // gameDivs.forEach(button => button.style.backgroundColor = "white") 
 }
 
 function runSequence() {
@@ -96,7 +94,7 @@ function runSequence() {
     for (i=0; i<sequence.length; i++){
         let item = buttonArray[sequence[i]]
         if (i>0) {
-            delay += 2000
+            delay += 1750
             setTimeout(callFlash, delay, item )
         } else {
             item.flashButton()
@@ -119,5 +117,8 @@ function clearWatch() {
 
 function loss(){
     currentStatus.textContent = "Sorry, that wasn't right! Click 'Reset' to try again"
-    
+    if (currentScore > highScore) {
+        highScore = currentScore
+    }
+    highScoreDisplay.textContent = highScore
 }
