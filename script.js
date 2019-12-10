@@ -29,6 +29,7 @@ let sequence = []
 let currentCount = 0
 let currentScore = 0
 let watching = true
+let highScore = 0
 
 startButton.addEventListener('click', evt => {startGame(evt)})
 // gameContainer.addEventListener('click', evt => {handleClick(evt)})
@@ -54,14 +55,31 @@ class GameButton {
  })
 
 function startGame(evt) {
-    // startButton.style.visibility = "hidden"
+    if (currentScore > highScore) {
+        highScore = currentScore
+    }
+    startButton.textContent = "Reset"
+    sequence = []
+    currentScore = 0
     runSequence()
 }
 
 function handleClick(evt) {
-    console.log(evt)
-    let id = evt.target.dataset.number
-    buttonArray[id].flashButton()
+    if (watching) {return}
+    let id = parseInt(evt.target.dataset.number)
+    if (id === sequence[currentCount]) {
+        buttonArray[id].flashButton()
+        currentCount++
+        currentStatus.textContent = "Good!"
+         if (currentCount > currentScore) {
+            currentScore = currentCount}
+        scoreDisplay.textContent = currentScore
+        if (currentCount === sequence.length) {
+            setTimeout(runSequence, 2000)
+        }
+    } else {
+        loss()
+    }
 }
 
 function clearButtons() {
@@ -69,25 +87,37 @@ function clearButtons() {
 }
 
 function runSequence() {
+    currentCount = 0
     currentStatus.textContent = "Watch"
+    watching = true
     let nextButton = Math.floor(Math.random() * 6)
     sequence.push(nextButton)
     let delay = 0
     for (i=0; i<sequence.length; i++){
-        let item = buttonArray[i]
+        let item = buttonArray[sequence[i]]
         if (i>0) {
             delay += 2000
-            console.log(delay)
             setTimeout(callFlash, delay, item )
         } else {
             item.flashButton()
         }
+        if (i === sequence.length - 1) {
+            setTimeout(clearWatch, delay)
+        }
     }
-        
-    console.log(sequence)
+
 }
 
 function callFlash(obj){
     obj.flashButton()
 }
-  
+
+function clearWatch() {
+    watching = false;
+    currentStatus.textContent = "Repeat"
+}
+
+function loss(){
+    currentStatus.textContent = "Sorry, that wasn't right! Click 'Reset' to try again"
+    
+}
