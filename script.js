@@ -41,7 +41,7 @@ class GameButton {
     }
     flashButton() {
         this.div.style.backgroundColor = this.tag
-        setTimeout(clearButton, 750, this.div)
+        setTimeout(clearButton, 650, this.div)
     }
 
 }
@@ -62,6 +62,7 @@ function startGame(evt) {
 }
 
 function handleClick(evt) {
+    // console.log(evt)
     if (watching) {return}
     let id = parseInt(evt.target.dataset.number)
     if (id === sequence[currentCount]) {
@@ -94,7 +95,7 @@ function runSequence() {
     for (i=0; i<sequence.length; i++){
         let item = buttonArray[sequence[i]]
         if (i>0) {
-            delay += 1750
+            delay += 1650
             setTimeout(callFlash, delay, item )
         } else {
             item.flashButton()
@@ -116,6 +117,7 @@ function clearWatch() {
 }
 
 function loss(){
+    watching = true
     currentStatus.textContent = "Sorry, that wasn't right! Click 'Reset' to try again"
     if (currentScore > highScore) {
         highScore = currentScore
