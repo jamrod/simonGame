@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lexend+Peta|Tomorrow&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <header>
@@ -17,7 +18,7 @@
         <section id="game-area">
             <div id="game-container">
                 <div id="red" class="red game-buttons" data-number="0">RED</div>
-                <div id="yellow" class="yellow game-buttons" data-number="1">YELLOW</div>
+                <div id="gold" class="yellow game-buttons" data-number="1">YELLOW</div>
                 <div id="blue" class="blue game-buttons" data-number="2">BLUE</div>
                 <div id="orange" class="orange game-buttons" data-number="3">ORANGE</div>
                 <div id="green" class="green game-buttons" data-number="4">GREEN</div>
@@ -25,12 +26,14 @@
             </div>
             <br>
             <div id="display-area">
-                <!-- <p id="status-display"></p> -->
-                <p>Score <span id="score-display"></span></p>
-                <button id="start-button">Start</button>
-                <div id="current-status">
+                <div id="status-display">
+                    <button id="start-button">Start</button>
+                    <p id="current-status"></p>
                 </div>
-                <p>HighScore <span id="highscore-display"></span></p>
+                <div id="score-area">
+                    <p>Score <span id="score-display"></span></p>
+                    <p>HighScore <span id="highscore-display"></span></p>
+                </div>
             </div>
         </section>
     </main>

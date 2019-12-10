@@ -1,23 +1,25 @@
 body {
-    background-color: oldLace;
+    background-color: rgb(43, 48, 48);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    color : white;
+    font-family: 'Lexend Peta', sans-serif;
 }
 header {
-    /* display: flex;
-    flex-direction: column; */
+    /* font-family: 'Tomorrow', sans-serif; */
 }
 h1 {
+    font-family: 'Tomorrow', sans-serif;
     text-align: center;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 0;
+    padding: 10px;
 }
 
 h2 {
+    font-family: 'Lexend Peta', sans-serif;
     text-align: center;
-    margin: 0 auto;
-    padding: 0 0 30px 0
+    padding: 0 0 30px 0;
 }
 
 #game-container {
@@ -28,20 +30,20 @@ h2 {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr ;
     margin: 0 auto;
-    column-gap: 5px;
+    column-gap: 20px;
     row-gap: 20px;
 }
 
 .game-buttons {
+    background-color: oldLace;
     height: 150px;
-    width: 150px;
+    width: 175px;
     background-color:white;
-    margin : 0;
     text-align: center; 
     line-height : 150px;
     -moz-user-select: none;
     user-select: none;
-    border-radius: 50%;
+    border-radius: 45%;
 }
 
 #red {
@@ -50,10 +52,10 @@ h2 {
     color : red;
 }
 
-#yellow {
+#gold {
     grid-column: 2;
     grid-row: 1;
-    color : yellow;
+    color : gold;
 }
 
 #blue {
@@ -81,8 +83,38 @@ h2 {
 }
 
 #display-area {
+    display : grid;
+    grid-template-columns: 1;
+    grid-template-rows: 2;
+}
+
+#status-display {
+    grid-row: 1;
+    grid-column: 1;
     display : flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    line-height: 50 px;
+}
+
+#score-area {
+    grid-row: 2;
+    grid-column: 1;
+    display : flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#start-button {
+    width: 150px;
+    height: 45px;
+    background-color: oldlace;
+    border-radius: 10%;
+    font-size: x-large;
+}
+
+#current-status {
+    font-size: x-large;
 }
