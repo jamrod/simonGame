@@ -116,7 +116,9 @@ function loss(){
     currentStatus.textContent = "Sorry, try again"
     if (currentScore > highScore) {
         highScore = currentScore
-        localStorage.setItem('score',highScore)
+        let allTimeHighScore = localStorage.getItem('score')
+        if (highScore > allTimeHighScore)
+        localStorage.setItem('score', highScore)
     }
     highScoreDisplay.textContent = highScore
     getAllTime()
