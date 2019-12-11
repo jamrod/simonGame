@@ -145,3 +145,44 @@ h2 {
         padding: 20px 0 0 0;
     }
 }
+
+#modal {
+    display: none;
+    background-color: rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+#text-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#modal-textbox {
+    margin: 0 auto;
+    padding: 10px;
+    background-color: lightgrey;
+    height: 260px;
+    width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    color: black;
+}
+
+#textbox-foot {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+#close {
+    padding: 10px;
+}

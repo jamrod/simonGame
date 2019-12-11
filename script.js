@@ -11,22 +11,27 @@
 //CREATE restart
     //persist highscore
 
+//Get HTML elements
 const gameContainer = document.querySelector("#game-container")
 const scoreDisplay = document.querySelector("#score-display")
 const currentStatus = document.querySelector("#current-status")
 const startButton = document.querySelector("#start-button")
 const highScoreDisplay = document.querySelector("#highscore-display")
 const gameDivs = document.querySelectorAll(".game-buttons")
+const closeButton = document.querySelector("#close")
+const modal = document.querySelector("#modal")
 
+//Initialize variables
 let buttonArray = []
 let sequence = []
 let currentCount = 0
 let currentScore = 0
 let watching = true
 let highScore = 0
+let useModal = true
 
 startButton.addEventListener('click', evt => {startGame(evt)})
-// gameContainer.addEventListener('click', evt => {handleClick(evt)})
+closeButton.addEventListener('click', closeModal)
 
 class GameButton {
     constructor(tag){
@@ -52,6 +57,7 @@ function startGame(evt) {
     sequence = []
     currentScore = 0
     scoreDisplay.textContent = currentScore
+    useModal = false
     runSequence()
 }
 
@@ -133,3 +139,15 @@ function getAllTime() {
     }
 }
 getAllTime()
+
+function openModal() {
+    if (useModal) {
+        modal.style.display = 'block'
+    }
+}
+
+function closeModal() {
+    modal.style.display = 'none'
+}
+
+setTimeout(openModal, 5000)
