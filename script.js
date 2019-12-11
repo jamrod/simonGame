@@ -81,6 +81,7 @@ function clearButton(obj) {
 function runSequence() {
     currentCount = 0
     currentStatus.textContent = "Watch"
+    currentStatus.style.fontSize = "x-large"
     watching = true
     let nextButton = Math.floor(Math.random() * 6)
     sequence.push(nextButton)
