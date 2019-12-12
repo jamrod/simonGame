@@ -31,7 +31,6 @@ class GameButton {
     flashButton() {
         this.div.style.backgroundColor = this.tag
         this.div.classList.add("shadow")
-        console.log(this.div.classList)
         setTimeout(clearButton, 650, this.div)
     }
 
