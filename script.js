@@ -1,15 +1,3 @@
-//GET all elements and stor in vars
-//ADD event listeners to color quares
-//CREATE an array for the current sequence
-//CREATE a var for score, current count of correct
-//CREATE a function to flash color square
-//CREATE a function to add a new color to the sequence and run the sequence
-//CREATE an array to hold user responses
-//CREATE a function to compare user response to current sequence
-//CREATE a function to manage diplay area
-//CREATE lose response
-//CREATE restart
-    //persist highscore
 
 //Get HTML elements
 const gameContainer = document.querySelector("#game-container")
@@ -42,6 +30,8 @@ class GameButton {
     }
     flashButton() {
         this.div.style.backgroundColor = this.tag
+        this.div.classList.add("shadow")
+        console.log(this.div.classList)
         setTimeout(clearButton, 650, this.div)
     }
 
@@ -93,6 +83,7 @@ function callFlash(obj){
 //clear button backgrounds so they appear to flash
 function clearButton(obj) {
     obj.style.backgroundColor = "white"
+    obj.classList.remove("shadow")
 }
 
 //add a new square to the sequence and flash them in order
@@ -172,25 +163,9 @@ setTimeout(openModal, 6000)
 
 //flash start button on load to draw the eye to it
 function flashStart() {
+    if (useModal) {
     startButton.style.backgroundColor = 'red'
     setTimeout(clearButton, 400, startButton)
+    }
 }
 setTimeout(flashStart,1750)
-
-//create setCurrentStatus function
-    //eval good input but not last = 'Good!'
-    //sequence correctly completed = 'Nice Work!
-    //sequence start = 'Watch' font X-Large
-    //sequence end = 'repeat'
-    //loss = font medium
-        //if new high score = 'New High Score!"
-        //if new alltime = 'New All Time High!'
-        //else = 'Sorry, try again'
-        //
-// function setCurrentStatus(str) {
-//     switch (str) {
-//         case 'good':
-//             currentStatus.textContent = 'Good!'
-//     }
-
-//}
