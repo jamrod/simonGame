@@ -30,9 +30,11 @@ let watching = true
 let highScore = 0
 let useModal = true
 
+//event listeners
 startButton.addEventListener('click', evt => {startGame(evt)})
 closeButton.addEventListener('click', closeModal)
 
+//create class to manage game buttons
 class GameButton {
     constructor(tag){
         this.tag = tag
@@ -45,6 +47,7 @@ class GameButton {
 
 }
 
+//instatiate each button, link to DOM and add event listener
  gameDivs.forEach (button => {
     tag = button.id
     newButton = new GameButton(tag)
@@ -52,6 +55,7 @@ class GameButton {
     button.addEventListener('click', evt => {handleClick(evt)})
  })
 
+ //start the game, run the initial sequence
 function startGame(evt) {
     startButton.textContent = "Restart"
     sequence = []
@@ -61,8 +65,8 @@ function startGame(evt) {
     runSequence()
 }
 
+//handle clicks
 function handleClick(evt) {
-    // console.log(evt)
     if (watching) {return}
     let id = parseInt(evt.target.dataset.number)
     if (id === sequence[currentCount]) {
@@ -73,6 +77,7 @@ function handleClick(evt) {
             currentScore = currentCount}
         scoreDisplay.textContent = currentScore
         if (currentCount === sequence.length) {
+            currentStatus.textContent = "Got it!"
             setTimeout(runSequence, 2000)
         }
     } else {
@@ -80,10 +85,17 @@ function handleClick(evt) {
     }
 }
 
+//flash the button
+function callFlash(obj){
+    obj.flashButton()
+}
+
+//clear button backgrounds so they appear to flash
 function clearButton(obj) {
     obj.style.backgroundColor = "white"
 }
 
+//add a new square to the sequence and flash them in order
 function runSequence() {
     currentCount = 0
     currentStatus.textContent = "Watch"
@@ -108,15 +120,13 @@ function runSequence() {
 
 }
 
-function callFlash(obj){
-    obj.flashButton()
-}
-
+//clears the "watch" state so that user input is allowed and sets text to "repeat"
 function clearWatch() {
     watching = false;
     currentStatus.textContent = "Repeat"
 }
 
+//loss state and text
 function loss(){
     watching = true
     currentStatus.style.fontSize = "medium"
@@ -124,13 +134,18 @@ function loss(){
     if (currentScore > highScore) {
         highScore = currentScore
         let allTimeHighScore = localStorage.getItem('score')
-        if (highScore > allTimeHighScore)
+        if (highScore > allTimeHighScore) {
         localStorage.setItem('score', highScore)
+        currentStatus.textContent = "New All Time High!"
+        } else {
+            currentStatus.textContent = "New High Score!"
+        }
     }
     highScoreDisplay.textContent = highScore
     getAllTime()
 }
 
+//get all time high score if stored locally, called on load
 function getAllTime() {
     if (localStorage.getItem('score')) {
         let allTimeHighScore = localStorage.getItem('score')
@@ -140,14 +155,42 @@ function getAllTime() {
 }
 getAllTime()
 
+//open a modal explainer
 function openModal() {
     if (useModal) {
         modal.style.display = 'block'
     }
 }
 
+//close the modal
 function closeModal() {
     modal.style.display = 'none'
 }
 
-setTimeout(openModal, 5000)
+//open modal automatically if game hasn't started
+setTimeout(openModal, 6000)
+
+//flash start button on load to draw the eye to it
+function flashStart() {
+    startButton.style.backgroundColor = 'red'
+    setTimeout(clearButton, 400, startButton)
+}
+setTimeout(flashStart,1750)
+
+//create setCurrentStatus function
+    //eval good input but not last = 'Good!'
+    //sequence correctly completed = 'Nice Work!
+    //sequence start = 'Watch' font X-Large
+    //sequence end = 'repeat'
+    //loss = font medium
+        //if new high score = 'New High Score!"
+        //if new alltime = 'New All Time High!'
+        //else = 'Sorry, try again'
+        //
+// function setCurrentStatus(str) {
+//     switch (str) {
+//         case 'good':
+//             currentStatus.textContent = 'Good!'
+//     }
+
+//}

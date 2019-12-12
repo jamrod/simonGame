@@ -107,7 +107,7 @@ h2 {
 #start-button {
     width: 150px;
     height: 45px;
-    background-color: oldlace;
+    background-color :oldlace;
     border-radius: 10%;
     font-size: x-large;
 }
@@ -148,7 +148,7 @@ h2 {
 
 #modal {
     display: none;
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.7);
     position: fixed;
     top: 0;
     left: 0;
@@ -183,6 +183,10 @@ h2 {
     padding: 5px;
 }
 
+#textbox-foot, span {
+    font-size: x-small;
+}
+
 #close {
-    padding: 10px;
+    padding: 7px;
 }
