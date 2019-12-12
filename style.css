@@ -198,3 +198,7 @@ h2 {
 #close {
     padding: 7px;
 }
+
+.loss {
+    background-image: radial-gradient(red 35%, rgba(43, 48, 48,.5) 65%);
+}

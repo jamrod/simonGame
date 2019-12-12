@@ -119,6 +119,8 @@ function clearWatch() {
 
 //loss state and text
 function loss(){
+    gameContainer.classList.add("loss")
+    setTimeout(function () {gameContainer.classList.remove("loss")}, 650)
     watching = true
     currentStatus.style.fontSize = "medium"
     currentStatus.textContent = "Sorry, try again"
