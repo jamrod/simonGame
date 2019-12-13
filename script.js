@@ -10,13 +10,13 @@ const closeButton = document.querySelector("#close")
 const modal = document.querySelector("#modal")
 
 //Initialize variables
-let buttonArray = []
-let sequence = []
-let currentCount = 0
-let currentScore = 0
-let watching = true
-let highScore = 0
-let useModal = true
+let buttonArray = [] //will hold all the button objects
+let sequence = [] //random generated sequenct that playere must repeat
+let currentCount = 0 //players current place in the sequence
+let currentScore = 0 //score
+let watching = true //boolean used to stop user input during sequence
+let highScore = 0 //best score of current browser session
+let useModal = true //boolean to trigger modal if start not clicked
 
 //event listeners
 startButton.addEventListener('click', evt => {startGame(evt)})
@@ -36,7 +36,7 @@ class GameButton {
 
 }
 
-//instatiate each button, link to DOM and add event listener
+//instantiate each button, link to DOM and add event listener
  gameDivs.forEach (button => {
     tag = button.id
     newButton = new GameButton(tag)
