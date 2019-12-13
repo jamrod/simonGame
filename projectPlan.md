@@ -16,10 +16,11 @@
 Create simon memory game
 Watch a sequence of colored squares flash then repeat the sequence by clicking on the squares in the same order. App will track whether you followed the sequence properly. Sequence will increase by 1 on every iteration. Score will track how long the sequence was that you last got correctly.
 
-Gold, mobile responsive, persist a highscore log with a name, rules pop-up at beginning
+Gold, mobile responsive, persist a highscore, rules pop-up at beginning
 
-Links
+##Links
 
+faultyStars.org[www.faultystars.org]
 
 ## Priority Matrix
 
