@@ -11,7 +11,7 @@ const modal = document.querySelector("#modal")
 
 //Initialize variables
 let buttonArray = [] //will hold all the button objects
-let sequence = [] //random generated sequenct that playere must repeat
+let sequence = [] //random generated sequence that player must repeat
 let currentCount = 0 //players current place in the sequence
 let currentScore = 0 //score
 let watching = true //boolean used to stop user input during sequence
@@ -44,7 +44,7 @@ class GameButton {
     button.addEventListener('click', evt => {handleClick(evt)})
  })
 
- //start the game, run the initial sequence
+ //start the game, run the initial sequence, change to restart button, clear variables on restart
 function startGame(evt) {
     startButton.textContent = "Restart"
     sequence = []
@@ -54,7 +54,7 @@ function startGame(evt) {
     runSequence()
 }
 
-//handle clicks
+//handle clicks, evaluate player input against sequence
 function handleClick(evt) {
     if (watching) {return}
     let id = parseInt(evt.target.dataset.number)
